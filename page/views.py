@@ -3,4 +3,6 @@ from .models import Post
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    # post queryset
+    posts = Post.objects.all()
+    return render(request, 'home.html', {'posts':posts})
