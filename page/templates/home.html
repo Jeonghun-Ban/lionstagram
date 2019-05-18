@@ -1,6 +1,12 @@
 {% for post in posts %}
 {{post.author}}
-{{post.pub_date}}
-{{post.content}}
 <br>
+{{post.pub_date}}
+<br>
+{{post.summary}}
+<br>
+<!-- id는 데이터베이스 생성시 자동 생성되며, 기본 pk값으로 지정되어 있음 -->
+<a href="{% url 'detail' post.id %}">디테일 페이지로...</a>
+<br>
+<hr>
 {% endfor %}
