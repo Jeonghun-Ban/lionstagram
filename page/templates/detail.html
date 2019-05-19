@@ -1,6 +1,34 @@
-<h1>디테일 페이지입니다</h1>
-{{post.author}}
-<br>
-{{post.pub_date}}
-<br>
-{{post.content}}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 center-align">
+            <br>
+            <div class="card">
+                <!-- Header -->
+                <div class="card-body">
+                    <img alt="Lionstagram_logo" src="{% static 'page/images/lion.jpg' %}" width="25" height="25"
+                        class="d-inline-block align-top"><strong style="padding-left:10px;">{{post.author}}</strong>
+                    <hr>
+                </div>
+
+                <!-- Image -->
+                <a class="image">
+                    <img src="{% static 'page/images/thumbnail.jpg' %}" class="card-img-top" alt="...">
+                </a>
+
+                <!-- Post -->
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text"><strong>{{post.author}}</strong> {{post.content}}</p>
+                    <small class="card-text" style="color:gray;">{{post.pub_date}}</small>
+                    <hr>
+                    <p class="text-right"><a href="{% url 'home' %}" class="btn btn-primary">홈으로</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,12 +1,38 @@
-{% for post in posts %}
-{{post.author}}
-<br>
-{{post.pub_date}}
-<br>
-{{post.summary}}
-<br>
-<!-- id는 데이터베이스 생성시 자동 생성되며, 기본 pk값으로 지정되어 있음 -->
-<a href="{% url 'detail' post.id %}">디테일 페이지로...</a>
-<br>
-<hr>
-{% endfor %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 center-align">
+            <!-- post object list in reverse order -->
+            {% for post in posts reversed %}
+            <br>
+            <div class="card">
+                <!-- Header -->
+                <div class="card-body">
+                    <img alt="Lionstagram_logo" src="{% static 'page/images/lion_profile.jpg' %}" width="25" height="25"
+                        class="d-inline-block align-top"><strong style="padding-left:10px;">
+                        {{post.author}}</strong>
+                    <hr>
+                </div>
+
+                <!-- Image -->
+                <a href="{% url 'detail' post.id %}">
+                    <img src="{% static 'page/images/thumbnail.jpg' %}" class="card-img-top" alt="...">
+                </a>
+
+                <!-- Post -->
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text"><strong>{{post.author}}</strong>{{post.summary}}</p>
+                    <p><small class="card-text" style="color:gray;">
+                            {{post.pub_date}}</small></p>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
