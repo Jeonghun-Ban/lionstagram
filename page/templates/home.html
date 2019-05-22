@@ -19,7 +19,11 @@
 
                 <!-- Image -->
                 <a href="{% url 'detail' post.id %}">
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" class="card-img-top" alt="...">
+                    {% else %}
                     <img src="{% static 'page/images/thumbnail.jpg' %}" class="card-img-top" alt="...">
+                    {% endif %}
                 </a>
 
                 <!-- Post -->

@@ -16,7 +16,11 @@
 
                 <!-- Image -->
                 <a class="image">
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" class="card-img-top" alt="...">
+                    {% else %}
                     <img src="{% static 'page/images/thumbnail.jpg' %}" class="card-img-top" alt="...">
+                    {% endif %}
                 </a>
 
                 <!-- Post -->
