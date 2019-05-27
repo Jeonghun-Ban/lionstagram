@@ -2,14 +2,39 @@
 
 {% block content %}
 
-<br>
-<form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  <input type="file" name="file">
-  <br>
-  <textarea name="content" cols="50" rows="10" ></textarea>
-  <br>
-  <input type="submit" value="글쓰기">
-</form>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 center-align">
+        <br>
+        <div class="card">
+          <div class="col-md-10 center-align">
+            <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data" class="p-3">
+              {% csrf_token %}
+              <br>
+              <!-- 사진 업로드 -->
+              <div class="form-group">
+                <label for="image">
+                  <h4>사진 업로드</h4>
+                </label>
+                <br>
+                <input type="file" name="image" id="image">
+              </div>
+              <hr>
+              <div class="form-group">
+                <label for="content">
+                  <h4>내용</h4>
+                </label>
+                <textarea class="form-control" name="content" id="content" rows="10" placeholder="내용을 입력해주세요"></textarea>
+              </div>
+              <br>
+              <div class="form-group text-center">
+                <input class="btn btn-outline-primary" type="submit" value="글쓰기">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
