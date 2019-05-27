@@ -11,4 +11,5 @@ urlpatterns = [
     path('', page.views.home, name='home'),
     path('detail/<int:post_id>', page.views.detail, name='detail'),
     path('new', page.views.new, name='new'),
+    path('delete/<int:post_id>', page.views.delete, name='delete'),
 ] + static('/media/', document_root=settings.MEDIA_ROOT)

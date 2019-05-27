@@ -24,3 +24,11 @@ def new(request):
         post.save()
         return redirect('/detail/'+str(post.id))
     return render(request, 'new.html')
+
+def delete(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if post.author == request.user:
+        post.delete()
+        return redirect('home')
+    else:
+        return redirect('post_detail', post_id)

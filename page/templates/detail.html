@@ -11,6 +11,16 @@
                 <div class="card-body">
                     <img alt="Lionstagram_logo" src="{% static 'page/images/lion.jpg' %}" width="25" height="25"
                         class="d-inline-block align-top"><strong style="padding-left:10px;">{{post.author}}</strong>
+                        {% if user.is_authenticated and user.username == post.author.username %}
+                        <div class="btn-group" style="float:right;">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li><a href="{% url 'delete' post.id %}" class="dropdown-item">삭제</a></li>
+                          </ul>
+                        </div>
+                        {% endif %}
                     <hr>
                 </div>
 
