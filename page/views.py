@@ -32,3 +32,15 @@ def delete(request, post_id):
         return redirect('home')
     else:
         return redirect('post_detail', post_id)
+
+def edit(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == 'POST':
+        post.content = request.POST['content']
+        # image 파일이 있으면 post 객체에 저장
+        if 'image' in request.FILES:
+            post.image = request.FILES['image']
+        post.save()
+        return redirect('/post/'+str(post.id))
+    else:
+        return render(request, 'edit.html', {'post':post})

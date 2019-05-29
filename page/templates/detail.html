@@ -17,6 +17,7 @@
                             <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li><a href="{% url 'edit' post.id %}" class="dropdown-item">수정</a></li>
                             <li><a href="{% url 'delete' post.id %}" class="dropdown-item">삭제</a></li>
                           </ul>
                         </div>
